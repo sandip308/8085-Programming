@@ -1,0 +1,23 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+LHLD 0000H	;MULTIPLICAND
+XCHG
+LDA 0002H	;MULTIPLIER
+LXI H,0000H
+MVI C,08H
+LOOP: DAD H	;H<-H+H
+RAL
+JNC SKIP
+DAD D		;H<-D+H
+SKIP: DCR C
+JNZ LOOP
+SHLD 0009H
+hlt

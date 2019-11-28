@@ -1,0 +1,27 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+LXI H,0000H
+MOV C,M
+MVI B,01H
+FACTLOOP: CALL MULTIPLY
+DCR C
+JNZ FACTLOOP
+INX H
+MOV M,B
+HLT
+
+MULTIPLY: MOV E,C
+MVI A,00H
+LOOP: ADD B
+DCR E
+JNZ LOOP
+MOV B,A
+RET
